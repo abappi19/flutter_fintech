@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter_fintech/router.gr.dart';
 
 @RoutePage()
 class HomeScreen extends StatefulWidget {
@@ -13,7 +14,6 @@ class HomeScreen extends StatefulWidget {
   // case the title) provided by the parent (in this case the App widget) and
   // used by the build method of the State. Fields in a Widget subclass are
   // always marked "final".
-
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -35,6 +35,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final router = AutoRouter.of(context);
+
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
@@ -74,6 +76,12 @@ class _HomeScreenState extends State<HomeScreen> {
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                router.push(const AboutRoute());
+              },
+              child: const Text("About"),
             ),
           ],
         ),
